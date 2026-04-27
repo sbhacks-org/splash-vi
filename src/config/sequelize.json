@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "postgres",
-    "password": null,
+    "username": "sbhacksvi",
+    "password": "1234",
     "database": "sbhacksvi_dev",
-    "host": "localhost",
+    "host": "postgres",
     "dialect": "postgres",
     "operatorsAliases": false
   },

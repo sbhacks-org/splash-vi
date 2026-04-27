@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: splash-vi-postgres
+    image: postgres:10
+    environment:
+      POSTGRES_USER: sbhacksvi
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: sbhacksvi_dev
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5437:5432"  # Use 5437 on host to avoid conflicts
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sbhacksvi"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mongo:
+    container_name: splash-vi-mongo
+    image: mongo:3.6
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27019:27017"  # Use 27019 on host to avoid conflicts
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  splash-vi:
+    container_name: splash-vi
+    build: .
+    command: bash -c "npm run build && npm run db:migrate && (npm run seed || true) && npm start"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "3005:3000"  # Use 3005 on host to avoid conflicts
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    networks:
+      - caddy
+      - default
+    labels:
+      caddy: 2020.sbhacks.com
+      caddy.reverse_proxy: "{{upstreams 3000}}"
+    environment:
+      DATABASE_URL: postgresql://sbhacksvi:1234@postgres:5432/sbhacksvi_dev
+      MONGODB_URI: mongodb://mongo:27017/sbhacksvi
+      SESSION_SECRET: development_session_secret_change_in_production
+      NODE_ENV: development
+      PORT: 3000
+
+volumes:
+  postgres_data:
+    name: splash-vi-postgres-data
+  mongo_data:
+    name: splash-vi-mongo-data
+  node_modules:
+
+networks:
+  caddy:
+    external: true

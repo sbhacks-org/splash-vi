@@ -105,7 +105,6 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 				return (
 					<div className="body">
 						<p className="body-text">We had an extremely competitive applicant pool this year with only 400 spots available, and unfortunately, we are unable to offer you admission to SB Hacks VI. We hope to see your application next year!</p>
-						<p className="body-text">If you are still interested in getting involved with SB Hacks VI, consider attending as a <a href="/volunteers" target="_blank">volunteer</a> or <a href="/mentors" target="_blank">mentor</a>! Indicate your interest in our Facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">sbhacks.com/fb-event</a> to stay up-to-date with these possible opportunities!</p>
 					</div>
 				);
 			}

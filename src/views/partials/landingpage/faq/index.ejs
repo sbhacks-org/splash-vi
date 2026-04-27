@@ -75,28 +75,20 @@
 	}
 
 	function switchArrows(e) {
-		var upTrig, downTrig = null;
-		questionChilds = this.childNodes;
-		for (var i = 0; i < questionChilds.length; i++) {
-			// console.log(questionChilds[i].className);
-			if (questionChilds[i].className == "faqArrow upTriangle") {
-				upTrig = questionChilds[i];
-				// console.log(upTrig);
-			}
-			else if (questionChilds[i].className == "faqArrow downTriangle") {
-				downTrig = questionChilds[i];
-				// console.log(downTrig);
-			}
-		}
-		if (upTrig && downTrig) {
-			// console.log("toggle");
+		var answer = this.querySelector(".answer");
+		var upTrig = this.querySelector(".upTriangle");
+		var downTrig = this.querySelector(".downTriangle");
+
+		if (upTrig && downTrig && answer) {
 			if (downTrig.style.display != "none") {
 				downTrig.style.display = "none";
-				upTrig.style.display = "initial"
+				upTrig.style.display = "initial";
+				answer.style.maxHeight = "500px";
 			}
 			else {
 				downTrig.style.display = "initial";
 				upTrig.style.display = "none";
+				answer.style.maxHeight = "0";
 			}
 		}
 	}
