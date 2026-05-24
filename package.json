@@ -35,7 +35,7 @@
   "homepage": "https://github.com/dannycho7/SB_Hacks_V#readme",
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
-    "aws-sdk": "^2.288.0",
+    "aws-sdk": "^2.814.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.0.0",
