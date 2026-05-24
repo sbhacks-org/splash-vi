@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "install-peers": "^1.0.3",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.18.3"
   }
 }
