@@ -75,7 +75,7 @@
     "sequelize": "^4.44.3",
     "sequelize-cli": "^4.0.0",
     "serve-favicon": "^2.5.0",
-    "webpack": "^2.7.0"
+    "webpack": "^5.75.0"
   },
   "engines": {
     "node": "8.2.1"
