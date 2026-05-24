@@ -72,7 +72,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.82.1",
-    "sequelize": "^4.44.3",
+    "sequelize": "^5.15.1",
     "sequelize-cli": "^4.0.0",
     "serve-favicon": "^2.5.0",
     "webpack": "^2.7.0"
@@ -81,6 +81,7 @@
     "node": "8.2.1"
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "install-peers": "^1.0.3",
     "node-sass": "^4.13.0",
     "nodemon": "^1.18.3"
