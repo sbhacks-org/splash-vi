@@ -4,6 +4,7 @@ services:
   postgres:
     container_name: splash-vi-postgres
     image: postgres:10
+    restart: always
     environment:
       POSTGRES_USER: sbhacksvi
       POSTGRES_PASSWORD: 1234
@@ -21,6 +22,7 @@ services:
   mongo:
     container_name: splash-vi-mongo
     image: mongo:3.6
+    restart: always
     volumes:
       - mongo_data:/data/db
     ports:
@@ -34,6 +36,7 @@ services:
   splash-vi:
     container_name: splash-vi
     build: .
+    restart: always
     command: bash -c "npm run build && npm run db:migrate && (npm run seed || true) && npm start"
     volumes:
       - .:/app
